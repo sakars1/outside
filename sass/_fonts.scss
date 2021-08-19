@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Galaxie Copernicus';
+    src: url('../fonts/GalaxieCopernicus-Book.woff2') format('woff2'),
+        url('../fonts/GalaxieCopernicus-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@mixin p1{
+    font-size: 18px;
+    line-height: 1.4;
+    font-family: 'Galaxie Copernicus';
+    font-weight: normal;
+}
+@mixin p2{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    font-family: 'Inter';
+    font-weight: 400;
+}
+@mixin h1{
+    font-size: 64px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    font-family: 'Galaxie Copernicus', sans-serif;
+    font-weight: normal; 
+}
+@mixin h2{
+    font-size: 44px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    font-family: 'Galaxie Copernicus';
+    font-weight: normal;
+}
+@mixin h3{
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    font-family: 'Galaxie Copernicus';
+    font-weight: normal;
+}
+@mixin h4{
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    font-family: 'Galaxie Copernicus';
+    font-weight: normal;
+}
+@mixin h5{
+    font-size: 24px;
+    line-height: 1.0;
+    letter-spacing: 1px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+@mixin h6{
+    font-size: 14px;
+    line-height: 1.0;
+    font-family: 'Inter',sans-serif;
+    font-weight: bold;
+}
+@mixin b1{
+    line-height: 1.0;
+    letter-spacing: 1px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.h1{
+    @include h1;
+}
+.h2{
+    @include h2;
+}
+.h3{
+    @include h3;
+}
+.h4{
+    @include h4;
+}
+.h5{
+    @include h5;
+}
+.h6{
+    @include h6;
+}
+.p1{
+    @include p1;
+}
+.p2{
+    @include p2;
+}

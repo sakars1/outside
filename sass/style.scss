@@ -1,0 +1,209 @@
+@import "_vendor";
+@import "_colors";
+@import "_fonts";
+@import "_buttons";
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    color: $dark_grey;
+    background: $bg_light;
+}
+.ss-container{
+    margin-left: auto;
+    margin-right: auto;
+    @media(min-width:1200px){
+        max-width:calc(100% - (120px + 120px));
+        .row{
+            margin-left: -60px;
+            margin-right: -60px;
+        }
+        .row.no-gutters {
+          margin-right: 0;
+          margin-left: 0;
+
+          & > [class^="col-"],
+          & > [class*=" col-"] {
+            padding-right: 0;
+            padding-left: 0;
+          }
+        }
+        div[class^='col-md-'],div[class^='col-lg-'],div[class^='col-xl-']{
+            padding-left:60px;
+            padding-right:60px;
+        }
+    }
+}
+a{
+    color: inherit;
+    transition: 0.3s opacity ease;
+    opacity: 1;
+    &:hover{
+        text-decoration: none;
+        opacity:0.8;
+    }
+}
+.img-wrapper{
+    img{
+        max-width:100%;
+    }
+}
+.header-top{
+    height:60px;
+    ul{
+        li{
+            a{
+                color: #74788A;
+            }
+            & + li{
+                    margin-left:30px;
+                }
+        }
+    }
+}
+.site-nav{
+    position: relative;
+    &:before{
+        content: "";
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:60px;
+        background: #fff;
+        z-index:-1;
+    }
+    .nav-wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:32px 0;
+        .nav-logo{
+            img{
+                max-width:150px;
+                height:auto;
+            }
+        }
+        .nav-links{
+            display: flex;
+            margin:0;
+            list-style-type:none;
+            li{
+                a{
+                    color: $dark_grey;
+                    @include p2;
+                }
+                & + li{
+                    margin-left:50px;
+                }
+            }
+        }
+    }
+}
+.fake-nm{
+    position: relative;
+    &:before{
+        content:"";
+        position: absolute;
+        background-color:#fff;
+        z-index: -1;
+    }
+    &.tl:before{
+        top:0;
+        left:60px;
+        right:0;
+        bottom:0;
+    }
+    &.bl:before{
+        top:0;
+        left:60px;
+        right:0;
+        bottom:50%;
+    }
+    &.bl{
+        &.img-wrapper{
+            img{
+                width:100%;
+            }
+            padding-left: 120px;
+        }
+    }
+    &.tr:before{
+        top:0;
+        left:0;
+        right:60px;
+        bottom:0;
+    }
+    &.br:before{
+        top:0;
+        left:0;
+        right:60px;
+        bottom:50%;
+    }
+    &.br{
+        &.img-wrapper{
+            img{
+                width:100%;
+            }
+            padding-right: 120px;
+        }
+    }
+}
+.hero-section{
+    h1{
+        color: $dark_blue;
+    }
+}
+.section-heading{
+    text-transform: uppercase;
+    margin-bottom:30px;
+}
+.news-item{
+    padding:40px;
+    border:1px solid #fff;
+    margin-left:-1px;
+    margin-top:-1px;
+    .news-meta{
+        color: $gret_purp;
+        margin:20px 0;
+        text-transform: uppercase;
+        .day-month{
+            &:after{
+                content:"";
+                display: inline-block;
+                height:1px;
+                width:32px;
+                margin:0 8px;
+                vertical-align: middle;
+                background-color: $mid_grey;
+            }
+        }
+    }
+}
+.section-latest-news{
+    .section-heading{
+        margin-top:100px;
+        margin-bottom:60px;
+    }
+}
+.section-our-mission{
+    padding-bottom: 80px;
+    .fake-nm{
+        padding-top: 80px;
+        &:before{
+            background-color:$bg_red;
+        }
+    }
+}
+.section-beneficiaries{
+    padding-top:80px;
+    padding-bottom: 80px;
+    background-color: #fff;
+    .ben-carousel{
+        padding-left: 120px;
+        .slick-list {
+            padding: 0 60px 0 0;
+        }
+    }
+}
