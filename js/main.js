@@ -17,27 +17,9 @@ $(document).ready(function(){
     			}
     		]	
     	})
-	
-	$(".btn-scroll-down").on('click', function(){
-		$('html,body').animate({scrollTop: $("#scroll_down").offset().top},'slow');
-	})
-
-	if(!$("body").hasClass("home")){
-		var current_url = location.pathname;
-		$('.site-nav .nav-wrapper .nav-links #wp-megamenu-primary > .wpmm-nav-wrap ul.wp-megamenu > li ul.wp-megamenu-sub-menu li > a').each(function(){
-			var $this = $(this);
-			// if the current path is like this link, make it active
-			if($this.attr('href').indexOf(current_url) !== -1){
-				$this.addClass('active');
-			}
-		})
-	}
-
-	$( ".wp-megamenu-sub-menu img" ).wrap( "<div class='img-wrapper'></div>" );
-
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(){
-      
-        $(".hm-carousel").slick('setPosition');
+    $(".hamburger-btn").on("click", function(){
+    	$(this).toggleClass("close-btn");
+    	$(".site-nav").toggleClass("mobile-menu-active");
     })
 
     if(window.innerWidth>991){
@@ -96,109 +78,15 @@ $(document).ready(function(){
 	    lastScrollTop = st;
 	}
 
-	$(".site-nav").on('mouseenter',function(){
+	$(".site-nav .has-megamenu").on('mouseenter',function(){
 		
 				$("body").addClass('mm-open');		
 			})
 		
-	$(".site-nav").on('mouseleave',function(){
+	$(".site-nav .has-megamenu").on('mouseleave',function(){
 
 			$("body").removeClass('mm-open');		
 		})
-
-	var $milestone_carousel = $(".milestone-carousel").slick({
-		centerMode: true,
-		focusOnSelect: true,
-		centerPadding: 0,
-		slidesToShow: 3,
-		infinite:false,
-		prevArrow: '<div class="slick-prev"></div>',
-		nextArrow: '<div class="slick-next"></div>',
-		asNavFor: '.timeline-carousel',
-		responsive: [{
-		  breakpoint: 768,
-		  settings: {
-			arrows: false,
-			centerMode: true,
-			centerPadding: '40px',
-			slidesToShow: 3
-		  }
-		}, {
-		  breakpoint: 480,
-		  settings: {
-			arrows: false,
-			centerMode: true,
-			centerPadding: '40px',
-			slidesToShow: 1
-		  }
-		}]
-	  });
-
-	  var $timeline_carousel = $(".timeline-carousel").slick({
-        centerMode: true,
-		focusOnSelect: true,
-		variableWidth: true,
-		slidesToShow: 1,
-		arrows:false,
-		infinite: false,
-		asNavFor: '.milestone-carousel',
-		responsive: [{
-		  breakpoint: 768,
-		  settings: {
-			arrows: false,
-			centerMode: true,
-			centerPadding: '40px',
-			slidesToShow: 3
-		  }
-		}, {
-		  breakpoint: 480,
-		  settings: {
-			arrows: false,
-			centerMode: true,
-			centerPadding: '40px',
-			slidesToShow: 1
-		  }
-		}]
-	  });
-
-	  /**
- * FIX JUMPING ANIMATION
- * Set special animation class on first or last clone.
- */
-$milestone_carousel.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    var 
-        direction,
-        slideCountZeroBased = slick.slideCount - 1;
-
-    if (nextSlide == currentSlide) {
-        direction = "same";
-
-    } else if (Math.abs(nextSlide - currentSlide) == 1) {
-        direction = (nextSlide - currentSlide > 0) ? "right" : "left";
-
-    } else {
-        direction = (nextSlide - currentSlide > 0) ? "left" : "right";
-    }
-
-    // Add a temp CSS class for the slide animation (.slick-current-clone-animate)
-    if (direction == 'right') {
-        $('.slick-cloned[data-slick-index="' + (nextSlide + slideCountZeroBased + 1) + '"]', $milestone_carousel).addClass('slick-current-clone-animate');
-    }
-
-    if (direction == 'left') {
-        $('.slick-cloned[data-slick-index="' + (nextSlide - slideCountZeroBased - 1) + '"]', $milestone_carousel).addClass('slick-current-clone-animate');
-    }
-});
-
-$milestone_carousel.on('afterChange', function (event, slick, currentSlide, nextSlide) {
-    $('.slick-current-clone-animate', $milestone_carousel).removeClass('slick-current-clone-animate');
-    $('.slick-current-clone-animate', $milestone_carousel).removeClass('slick-current-clone-animate');
-});
-
-$(".hm-filter-wrapper select").on('change',function(){
-	$(".hm-filter-wrapper .btn").click();
-})
-
 
 gsap.registerPlugin(ScrollTrigger);
 

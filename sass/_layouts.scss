@@ -1,0 +1,143 @@
+@mixin xxs {
+  @media (max-width: 375px) { @content; }
+}
+
+@mixin xs {
+  @media (min-width: 576px) { @content; }
+}
+
+@mixin s {
+  @media (min-width: 786px) { @content; }
+}
+
+@mixin m {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin l {
+  @media (min-width: 1200px) { @content; }
+}
+
+@mixin xl {
+  @media (min-width: 1680px) { @content; }
+}
+@mixin xxl {
+  @media (min-width: 1920px) { @content; }
+}
+
+@mixin xxs-down {
+  @media (max-width: 375px) { @content; }
+}
+
+@mixin xs-down {
+  @media (max-width: 575px) { @content; }
+}
+
+@mixin s-down {
+  @media (max-width: 785px) { @content; }
+}
+
+@mixin m-down {
+  @media (max-width: 991px) { @content; }
+}
+
+@mixin l-down {
+  @media (max-width: 1199px) { @content; }
+}
+
+@mixin xl-down {
+  @media (max-width: 1679px) { @content; }
+}
+@mixin xxl-down {
+  @media (max-width: 1919px) { @content; }
+}
+
+.ss-container{
+    margin-left: auto;
+    margin-right: auto;
+    .row.no-gutters {
+      margin-right: 0;
+      margin-left: 0;
+
+      & > [class^="col-"],
+      & > [class*=" col-"] {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    @include xxs{
+        max-width:calc(100% - (32px + 32px));
+        .row{
+            margin-left: -16px;
+            margin-right: -16px;
+            & > [class^="col-"],
+            & > [class*=" col-"] {
+              padding-right: 16px;
+              padding-left: 16px;
+            }
+        }
+    }
+    @include xs{
+        max-width:calc(100% - (32px + 32px));
+        .row{
+            margin-left: -16px;
+            margin-right: -16px;
+            & > [class^="col-"],
+            & > [class*=" col-"] {
+              padding-right: 16px;
+              padding-left: 16px;
+            }
+        }
+    }
+    @include s{
+        max-width:calc(100% - (48px + 48px));
+        .row{
+            margin-left: -24px;
+            margin-right: -24px;
+            & > [class^="col-"],
+            & > [class*=" col-"] {
+              padding-right: 24px;
+              padding-left: 24px;
+            }
+        }
+    }
+    @include m{
+        max-width:calc(100% - (64px + 64px));
+        .row{
+            margin-left: -32px;
+            margin-right: -32px;
+            & > [class^="col-"],
+            & > [class*=" col-"] {
+              padding-right: 32px;
+              padding-left: 32px;
+            }
+        }
+    }
+    @include l{
+        max-width:calc(100% - (88px + 88px));
+        .row{
+            margin-left: -44px;
+            margin-right: -44px;
+            & > [class^="col-"],
+            & > [class*=" col-"] {
+              padding-right: 44px;
+              padding-left: 44px;
+            }
+        }
+    }
+    @include xl{
+        max-width:calc(100% - (120px + 120px));
+        .row{
+            margin-left: -60px;
+            margin-right: -60px;
+            & > [class^="col-"],
+            & > [class*=" col-"] {
+              padding-right: 60px;
+              padding-left: 60px;
+            }
+        }
+    }
+    @include xxl{
+        max-width:calc(100% - (240px + 240px));
+    }
+}
