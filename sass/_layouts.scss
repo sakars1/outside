@@ -1,5 +1,5 @@
 @mixin xxs {
-  @media (max-width: 375px) { @content; }
+  @media (min-width: 376px) { @content; }
 }
 
 @mixin xs {
@@ -65,18 +65,18 @@
         padding-left: 0;
       }
     }
-    @include xxs{
-        max-width:calc(100% - (32px + 32px));
-        .row{
-            margin-left: -16px;
-            margin-right: -16px;
-            & > [class^="col-"],
-            & > [class*=" col-"] {
-              padding-right: 16px;
-              padding-left: 16px;
-            }
+    
+    max-width:calc(100% - (32px + 32px));
+    .row{
+        margin-left: -16px;
+        margin-right: -16px;
+        & > [class^="col-"],
+        & > [class*=" col-"] {
+          padding-right: 16px;
+          padding-left: 16px;
         }
     }
+    
     @include xs{
         max-width:calc(100% - (32px + 32px));
         .row{

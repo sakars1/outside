@@ -11,6 +11,9 @@
     line-height: 1.4;
     font-family: 'Galaxie Copernicus';
     font-weight: normal;
+    @include xs-down{
+        font-size:14px;
+    }
 }
 @mixin p2{
     font-family: 'Inter', sans-serif;
@@ -19,6 +22,9 @@
     letter-spacing: 1px;
     font-family: 'Inter';
     font-weight: 400;
+    @include xs-down{
+        font-size:12px;
+    }
 }
 @mixin h1{
     font-size: 64px;
@@ -26,6 +32,9 @@
     letter-spacing: -1px;
     font-family: 'Galaxie Copernicus', sans-serif;
     font-weight: normal; 
+    @include xs-down{
+        font-size:28px;
+    }
 }
 @mixin h2{
     font-size: 44px;
@@ -33,6 +42,9 @@
     letter-spacing: -1px;
     font-family: 'Galaxie Copernicus';
     font-weight: normal;
+    @include xs-down{
+        font-size:24px;
+    }
 }
 @mixin h3{
     font-size: 32px;
@@ -40,6 +52,9 @@
     letter-spacing: -1px;
     font-family: 'Galaxie Copernicus';
     font-weight: normal;
+    @include xs-down{
+        font-size:20px;
+    }
 }
 @mixin h4{
     font-size: 24px;
@@ -47,6 +62,9 @@
     letter-spacing: -1px;
     font-family: 'Galaxie Copernicus';
     font-weight: normal;
+    @include xs-down{
+        font-size:18px;
+    }
 }
 @mixin h5{
     font-size: 24px;
@@ -54,18 +72,28 @@
     letter-spacing: 1px;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+    @include xs-down{
+        font-size:14px;
+    }
 }
 @mixin h6{
     font-size: 14px;
     line-height: 1.0;
     font-family: 'Inter',sans-serif;
     font-weight: bold;
+    @include xs-down{
+        font-size:10px;
+    }
 }
 @mixin b1{
+    font-size: 18px;
     line-height: 1.0;
     letter-spacing: 1px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
+    @include xs-down{
+        font-size:14px;
+    }
 }
 
 .h1{

@@ -8,18 +8,82 @@ $(document).ready(function(){
       //   	nextArrow: '<div class="slick-next"></div>',
     		responsive: [
     			{
-    			  breakpoint: 575,
+    			  breakpoint: 785,
     			  settings: {
     				slidesToShow: 1,
     				slidesToScroll: 1,
-    				infinite: true,
     			  }
     			}
     		]	
     	})
+    $(".news-carousel").slick({
+    		infinite: true,
+    		arrows:false,
+    		// prevArrow: '<div class="slick-prev"></div>',
+      //   	nextArrow: '<div class="slick-next"></div>',
+    		responsive: [
+	    		{
+	    		  breakpoint: 9999,
+	    		  settings: "unslick"
+	    		},
+    			{
+    			  breakpoint: 785,
+    			  settings: {
+    				slidesToShow: 1,
+    				slidesToScroll: 1,
+    			  }
+    			}
+    		]	
+    	})
+        $(".gallery-carousel").slick({
+        		infinite: true,
+        		arrows:false,
+        		// prevArrow: '<div class="slick-prev"></div>',
+          //   	nextArrow: '<div class="slick-next"></div>',
+        		responsive: [
+    	    		{
+    	    		  breakpoint: 9999,
+    	    		  settings: "unslick"
+    	    		},
+        			{
+        			  breakpoint: 785,
+        			  settings: {
+        				slidesToShow: 1,
+        				slidesToScroll: 1,
+        			  }
+        			}
+        		]	
+        	})
+    var founder_carousel = $(".founder-carousel").slick({
+    		infinite: true,
+    		cssEase: 'linear',
+    		speed:1000,
+    		autoplaySpeed: 5000,
+    		fade: true,
+    		slidesToShow: 1,
+    		autoplay: true,
+    		pauseOnHover: false,
+    		arrows:false,
+    		responsive: [
+    			{
+    			  breakpoint: 785,
+    			  settings: "unslick"
+    			}
+    		]	
+    	})
+        founder_carousel.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        var currentSlideIndex = nextSlide;
+        $(".founder-carousel-wrapper > .founder-details p").removeClass("active");
+        $(".founder-carousel-wrapper > .founder-details p").eq(parseInt(currentSlideIndex)).addClass("active");
+    });
+    $(".founder-carousel-wrapper > .founder-details p").click(function(e){
+            slideIndex = $(this).index();
+            founder_carousel.slick('slickGoTo',parseInt(slideIndex));
+        });
     $(".hamburger-btn").on("click", function(){
     	$(this).toggleClass("close-btn");
     	$(".site-nav").toggleClass("mobile-menu-active");
+    	$("body").toggleClass("no-scrollY");
     })
 
     if(window.innerWidth>991){
@@ -92,27 +156,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 //console.clear();
 
-if($("body").hasClass("home")){
 	ScrollTrigger.create({
-		trigger: ".banner-caption h1",
-		animation: gsap.fromTo(".banner-caption h1", {autoAlpha: 0}, {duration: 0.3, autoAlpha: 1}),
+		trigger: ".hero-section h1",
+		animation: gsap.fromTo(".hero-section h1", {autoAlpha: 0}, {duration: 0.3, autoAlpha: 1}),
 		toggleActions: 'play none none none',
 		once: true,
 	  });
 
-	var words = $(".banner-caption h1").html().split(" ");
-$(".banner-caption h1").empty();
+	var words = $(".hero-section h1 a").html().split(" ");
+$(".hero-section h1 a").empty();
 $.each(words, function(i, v) {
 	if(v.split('<br>').length > 1){
-		$(".banner-caption h1").append($("<div style='display:inline-block'>").html(v.split('<br>')[0]));
-		$(".banner-caption h1").append('<br>');	
-		$(".banner-caption h1").append($("<div style='display:inline-block'>").html(v.split('<br>')[1]));
+		$(".hero-section h1 a").append($("<div style='display:inline-block'>").html(v.split('<br>')[0]));
+		$(".hero-section h1 a").append('<br>');	
+		$(".hero-section h1 a").append($("<div style='display:inline-block'>").html(v.split('<br>')[1]));
 	}else{
-		$(".banner-caption h1").append($("<div style='display:inline-block'>").html(v));
-		$(".banner-caption h1").append("<div style='display:inline-block'>&nbsp;</div>");
+		$(".hero-section h1 a").append($("<div style='display:inline-block'>").html(v));
+		$(".hero-section h1 a").append("<div style='display:inline-block'>&nbsp;</div>");
 	}
 });
-const banner_heading = gsap.utils.toArray('.banner-caption h1 div');
+const banner_heading = gsap.utils.toArray('.hero-section h1 a div');
 
 banner_heading.forEach((heading, i) => {
   const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 100}, {duration: 0.5, delay: (i-1)*0.1, autoAlpha: 1, y: 0});
@@ -122,160 +185,45 @@ banner_heading.forEach((heading, i) => {
 	animation: anim,
 	once: true,
   });
-});
-}
+});	
 
-   if(window.innerWidth > 767){
+// const layer_content = gsap.utils.toArray('.has-layer p');
 
-	gsap.utils.toArray('.layer-content').forEach(section => {
-		gsap.to(section, {
-		  y: -100,
-		  scrollTrigger: {
-			trigger: section,
-			scrub: true,
-		  }
-		});
-	  });
-	
-	  gsap.to(".contact-section .map-wrapper", {
-		y: -100,
-		scrollTrigger: {
-		  trigger: ".contact-section .map-wrapper",
-		  scrub: true,
-		}
-	  });
-
-	gsap.utils.toArray('.gfs-item').forEach(section => {
-		gsap.to(section, {
-		  y: -100,
-		  scrollTrigger: {
-			trigger: section,
-			scrub: true,
-		  }
-		});
-	  });
-
-	gsap.to(".banner-overlay-caption .img-wrapper img", {
-		y: -300,
-		ease: "linear",
-		  scrollTrigger: {
-			trigger: ".banner-overlay-caption .img-wrapper img",
-			scrub: true,
-		  }
-		});
-   }
-
-if(!$("body").hasClass("page-id-221")){
-	const layer_heading = gsap.utils.toArray('.has-layer h2,.gfs-content-wrapper .section-heading,.contact-section h2,.mv-page-content h3,.hm-carousel-item .hm-item-title,.facts-section h5');
-
-	layer_heading.forEach((heading, i) => {
-
-		const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 10}, {duration: 0.4, autoAlpha: 1, y: 0});
-
-		ScrollTrigger.create({
-		  trigger: heading,
-		  animation: anim,
-		  start: "top 90%",
-		});
-	});
-
-	const page_content = gsap.utils.toArray('.mv-page-content p');
-
-	page_content.forEach((heading, i) => {
-	const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
-
-	ScrollTrigger.create({
-		trigger: heading,
-		animation: anim,
-		start: "top 95%",
-		once: true,
-	});
-	});
-}	
-
-const layer_content = gsap.utils.toArray('.has-layer p');
-
-layer_content.forEach((heading, i) => {
-  const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
-
-  ScrollTrigger.create({
-	trigger: heading,
-	animation: anim,
-	start: "top 95%",
-	once: true,
-  });
-});
-
-const gfs_p = gsap.utils.toArray('.gfs-content-wrapper p');
-
-gfs_p.forEach((heading, i) => {
-  const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
-
-  ScrollTrigger.create({
-	trigger: heading,
-	animation: anim,
-	start: "top 95%",
-	once: true,
-  });
-});
-
-const c_img_wrapper = gsap.utils.toArray('.hm-carousel-item .img-wrapper');
-
-c_img_wrapper.forEach((img, i) => {
-  const anim = gsap.fromTo(img, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
-
-  ScrollTrigger.create({
-	trigger: img,
-	animation: anim,
-	start: "top 90%",
-	once: true,
-  });
-});
-
-// const c_heading = gsap.utils.toArray('.hm-carousel-item h3');
-
-// c_heading.forEach((heading, i) => {
-//   const anim = gsap.fromTo(heading, {autoAlpha: 0, y: -100}, {duration: 0.8, delay:(i-1)*0.2, autoAlpha: 1, y: 0});
+// layer_content.forEach((heading, i) => {
+//   const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
 
 //   ScrollTrigger.create({
 // 	trigger: heading,
 // 	animation: anim,
-// 	start: "top 50%",
-// 	end: "bottom -50px",
+// 	start: "top 95%",
 // 	once: true,
 //   });
 // });
 
-const p_img_wrapper = gsap.utils.toArray('.page .col-md-5 .img-wrapper');
+// const gfs_p = gsap.utils.toArray('.gfs-content-wrapper p');
 
-p_img_wrapper.forEach((img, i) => {
-  const anim = gsap.fromTo(img, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
+// gfs_p.forEach((heading, i) => {
+//   const anim = gsap.fromTo(heading, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
+
+//   ScrollTrigger.create({
+// 	trigger: heading,
+// 	animation: anim,
+// 	start: "top 95%",
+// 	once: true,
+//   });
+// });
+
+const fadein_item = gsap.utils.toArray('.news-item .img-wrapper,.news-item h3,.news-item .news-meta,.ben-item .img-wrapper,.ben-item p,.gallery-item .img-wrapper,.gallery-item p');
+
+fadein_item.forEach((f_item, i) => {
+  const anim = gsap.fromTo(f_item, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
 
   ScrollTrigger.create({
-	trigger: img,
+	trigger: f_item,
 	animation: anim,
 	start: "top 90%",
 	once: true,
   });
 });
-const p_img_wrapper2 = gsap.utils.toArray('.page .col-md-6 .img-wrapper');
-
-p_img_wrapper2.forEach((img, i) => {
-  const anim = gsap.fromTo(img, {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0});
-
-  ScrollTrigger.create({
-	trigger: img,
-	animation: anim,
-	start: "top 90%",
-	once: true,
-  });
-});
-
-ScrollTrigger.create({
-	trigger: '.boc-caption',
-	animation: gsap.fromTo(".boc-caption", {autoAlpha: 0, y: 100}, {duration: 0.5, autoAlpha: 1, y: 0}),
-	start: "top 90%",
-	once: true,
-  });
 
 })

@@ -1,8 +1,8 @@
 @import "_vendor";
 @import "_colors";
+@import "_layouts";
 @import "_fonts";
 @import "_buttons";
-@import "_layouts";
 
 html{
     scroll-behavior: smooth;
@@ -26,6 +26,9 @@ body{
         visibility: hidden;
         transition: 0.3s ease opacity, 0.3s ease visibility;
         z-index: 1028;
+    }
+    &.no-scrollY{
+        overflow-y: hidden;
     }
 }
 a{
@@ -96,7 +99,7 @@ a{
                     transform: translateX(0);
                     opacity:1;
                     visibility: visible;
-                    padding: 16px;
+                    padding: 0 32px;
                 }
                 .hamburger-btn{
                     .bar1, .bar2, .bar3{
@@ -151,9 +154,7 @@ a{
         top:0;
         bottom:0;
         right:0;
-        @include xxs{
-            left: 16px;
-        }
+        left: 16px;
         @include xs{
             left: 16px;
         }
@@ -239,6 +240,7 @@ a{
                 left:0;
                 right:0;
                 top:107px;
+                height: calc(100vh - 107px);
                 transform: translateX(-100%);
                 visibility: hidden;
                 opacity:0;
@@ -260,6 +262,9 @@ a{
                     transition: 0.3s ease color;
                     &:hover{
                         color: $dark_blue;
+                        @include l-down{
+                            color:rgba(255,255,255,0.7);
+                        }
                     }
                 }
                 & + li{
@@ -298,7 +303,7 @@ a{
                                 @include l-down{
                                     @include p2;
                                     padding: 15px 0;
-                                    color: #fff;
+                                    color: rgba(255,255,255,0.8);
                                 }
                                 
                             }
@@ -349,9 +354,8 @@ a{
         bottom:50%;
     }
     &.tl:before, &.bl:before{
-        @include xxs{
-            left: 16px;
-        }
+       
+        left: 16px;
         @include xs{
             left: 16px;
         }
@@ -376,9 +380,7 @@ a{
             img{
                 width:100%;
             }
-            @include xxs{
-                padding-left: 32px;
-            }
+            padding-left: 32px;
             @include xs{
                 padding-left: 32px;
             }
@@ -410,9 +412,8 @@ a{
         bottom:50%;
     }
     &.tr:before, &.br:before{
-        @include xxs{
-            right: 16px;
-        }
+        
+        right: 16px;
         @include xs{
             right: 16px;
         }
@@ -437,9 +438,9 @@ a{
             img{
                 width:100%;
             }
-            @include xxs{
-                padding-right: 32px;
-            }
+           
+            padding-right: 32px;
+            
             @include xs{
                 padding-right: 32px;
             }
@@ -473,7 +474,7 @@ a{
         bottom:50%;
     }
     &.bc{
-        &.img-wrapper{
+        .img-wrapper{
             img{
                 width:100%;
             }
@@ -520,6 +521,12 @@ a{
     border:1px solid #fff;
     margin-left:-1px;
     margin-top:-1px;
+    @include s-down{
+        padding:16px;
+        margin-top:0;
+        margin-left:0;
+        margin-right:-1px;
+    }
     .news-meta{
         color: $gret_purp;
         margin:20px 0;
@@ -541,6 +548,53 @@ a{
     .section-heading{
         margin-top:100px;
         margin-bottom:60px;
+        @include s-down{
+            margin-top:15px;
+            margin-bottom:30px;
+        }
+    }
+    .news-container{
+        @include s-down{
+            display:none;
+        }
+    }
+    .news-carousel-wrapper{
+        @include s{
+            display: none;
+        }
+        .news-item{
+            .img-wrapper a{
+                height: 250px;
+                overflow: hidden;
+                @include xs-down{
+                    height:170px;
+                }
+                img{
+                    width:100%;
+                    height:100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .news-carousel{
+            .img-wrapper{
+                a{
+                    display: block;
+                }
+            }
+            @include m-down{
+                padding-left: 48px;
+            }
+            @include xs-down{
+                padding-left: 32px;
+            }
+            @include s-down{
+                padding-left: 24px;
+            }
+            .slick-list {
+                padding: 0 90px 0 0;
+            }
+        }
     }
 }
 .section-our-mission{
@@ -555,14 +609,34 @@ a{
 .section-beneficiaries{
     padding-top:80px;
     padding-bottom: 80px;
+    @include m-down{
+        padding-top:50px;
+        padding-bottom: 50px;
+        .section-heading{
+            margin-bottom:0;
+        }
+    }
     background-color: #fff;
     .ben-carousel{
+        padding-left: 240px;
         .ben-item{
             padding:0 30px;
         }
         .img-wrapper{
             a{
                 display: block;
+            }
+        }
+        padding-left: 32px;
+        @include xxs-down{
+            .ben-item{
+                padding-right: 0;
+            }
+        }
+        @include xxs{
+            padding-left: 32px;
+            .ben-item{
+                padding-right: 0;
             }
         }
         @include xs{
@@ -580,9 +654,6 @@ a{
         @include xl{
             padding-left: 120px;
         }
-        @include xxl{
-            padding-left: 240px;
-        }
         .slick-list {
             padding: 0 90px 0 0;
             margin-left:-30px;
@@ -591,9 +662,22 @@ a{
 }
 .section-founders{
     padding-bottom: 80px;
+    @include m-down{
+        padding-bottom:50px;
+    }
     background-color: #fff;
     .fake-nm{
         padding-top: 80px;
+        @include m-down{
+            padding-top:30px;
+            &.bc:before{
+                top:0;
+                left:0;
+                right:0;
+                bottom:70%;
+            }
+        }
+
         & + .fake-nm{
             padding-top:50px;
         }
@@ -605,19 +689,63 @@ a{
             position: relative;
         }
     }
+    .img-wrapper{
+        @include m-down{
+            position: relative;
+            & + .img-wrapper{
+                margin-top:20px;
+            }
+        }
+        .founder-details{
+            @include m{
+                display: none;
+            }
+        }
+    }
+    .founder-carousel-wrapper{
+        position: relative;
+        & > .founder-details{
+            p{
+                &:after{
+                    content:"";
+                    display: inline-block;
+                    margin-left:15px;
+                    width:15px;
+                    height:15px;
+                    border-radius: 50%;
+                    background-color: $dark_blue;
+                    opacity:0;
+                    transition: 0.5s opacity ease;
+                    vertical-align: middle;
+                }
+                &.active{
+                    &:after{
+                        opacity: 1;
+                    }
+                }
+            }
+            @include m-down{
+                display:none;
+            }
+        }
+    }
     .founder-details{
         position:absolute;
+        z-index: 1;
+        
+        padding: 15px 32px;
+        
         @include xs{
-            padding: 60px 32px;
+            padding: 15px 32px;
         }
         @include s{
-            padding:60px 48px;
+            padding:30px 48px;
         }
         @include m{
-            padding:60px 64px;
+            padding:30px 64px;
         }
         @include l{
-            padding:60px 88px;
+            padding:30px 88px;
         }
         @include xl{
             padding:60px 120px;
@@ -628,9 +756,44 @@ a{
         bottom:0;
         left:0;
         width:100%;
-        hr{
-            border-color:#fff;
-            opacity:0.2;
+        p{
+            @include m-down{
+                    margin:0;
+                    padding:0;
+                    &:after{
+                        content:"\e900";
+                        font-family: 'icomoon' !important;
+                        margin-left:10px;
+                        font-size:14px;
+                    }
+                }
+            &:first-of-type{
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                @include m-down{
+                    margin:0;
+                    padding:0;
+                }
+                &:before{
+                    content: "";
+                    position: absolute;
+                    bottom:0;
+                    left:0;
+                    width:100%;
+                    height:0;
+                    border: 1px solid #fff;
+                    opacity:0.2;
+                }
+                @include m-down{
+                    &:before{
+                        content: none;
+                    }
+                }
+            }
+            position: relative;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
 }
@@ -641,12 +804,47 @@ a{
     }
     .section-heading{
         margin-top:60px;
+        @include m-down{
+            margin-top:0;
+        }
     }
     background-color:#fff;
+    .gallery-container{
+        @include m-down{
+            display: none;
+        }
+    }
+    .gallery-carousel-wrapper{
+        @include m{
+            display: none;
+        }
+        .gallery-carousel{
+            .img-wrapper{
+                a{
+                    display: block;
+                }
+            }
+            @include m-down{
+                padding-left: 48px;
+            }
+            @include xs-down{
+                padding-left: 32px;
+            }
+            @include s-down{
+                padding-left: 24px;
+            }
+            .slick-list {
+                padding: 0 90px 0 0;
+            }
+        }
+    }
     .gallery-item{
         padding:40px;
         border:1px solid #F2EFEE;
         margin-right:-1px;
+        @include s-down{
+            padding:16px;
+        }
     }
 }
 .footer{
